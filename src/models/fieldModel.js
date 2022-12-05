@@ -10,7 +10,7 @@ const fieldSchema = new mongoose.Schema({
     },
     propertyId: {
         type: ObjectId,
-        ref: 'property',
+        ref: 'Property',
         required: true,
         trim: true
     },

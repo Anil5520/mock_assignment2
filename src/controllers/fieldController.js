@@ -90,17 +90,13 @@ const getField = async (req, res) => {
 
 const getFieldById = async (req, res) => {
     try {
-        let propertyId = req.params.propertyId;
         let regionId = req.params.regionId;
         let fieldId = req.params.fieldId;
 
         if (!mongoose.isValidObjectId(regionId) || !mongoose.isValidObjectId(fieldId)) {
             return res.status(400).send({ status: false, message: 'regionId or fieldId is not valid ObjectId' });
         }
-        if (!mongoose.isValidObjectId(propertyId)) {
-            return res.status(400).send({ status: false, message: 'propertyId is not valid ObjectId' });
-        }
-        let findData = await fieldModel.findOne({ propertyId, regionId, fieldId }).populate({ path: 'propertyId', populate: [{ path: 'organizationId', model: 'Organization' }] }).populate('regionId');
+        let findData = await fieldModel.findOne({ regionId, fieldId }).populate({ path: 'propertyId', populate: [{ path: 'organizationId', model: 'Organization' }] }).populate('regionId');
 
         if (!findData) {
             return res.status(400).send({ status: false, message: 'Field not Found' });

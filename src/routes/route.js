@@ -8,7 +8,7 @@ const { authentication, authorization } = require('../middlewares/auth');
 const { createOrganization, getOrganizations, getOrganizationById } = require('../controllers/organizationController');
 const { createProperty, getProperty, getPropertyById } = require('../controllers/propertyController');
 const { createRegion, getRegion, getRegionById } = require('../controllers/regionController');
-const { createField, getField } = require('../controllers/fieldController');
+const { createField, getField, getFieldById } = require('../controllers/fieldController');
 
 const { createCrop, getCrop } = require('../controllers/cropController');
 const { createCropField } = require('../controllers/cropFieldController');
@@ -43,6 +43,7 @@ router.get('/:propertyId/getRegion', authentication, getRegion);
 router.get('/:propertyId/getRegion/:regionId', authentication, getRegionById);
 
 router.get('/:regionId/getField', authentication, getField);
+router.get('/:regionId/getField/:fieldId', authentication, getFieldById);
 
 router.get('/getCrop', authentication, getCrop);
 
