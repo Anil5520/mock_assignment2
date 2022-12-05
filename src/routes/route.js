@@ -34,7 +34,7 @@ router.post('/:userId/createCrop', authentication, authorization, createCrop);
 
 // GET API
 router.get('/getOrganization', authentication, getOrganizations);
-router.get('/:organizationId/getOrganization', authentication, getOrganizationById);
+router.get('/getOrganization/:organizationId', authentication, getOrganizationById);
 
 router.get('/:organizationId/getProperty', authentication, getProperty);
 router.get('/:organizationId/getProperty/:propertyId', authentication, getPropertyById);
