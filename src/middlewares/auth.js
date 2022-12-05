@@ -13,7 +13,7 @@ const authentication = async function (req, res, next) {
             return res.status(401).send({ status: false, message: "login is required" });
         }
 
-        let splitToken = token.split(" ")
+        let splitToken = token.split(" ");
 
         //----------------------------- Token Verification -----------------------------//
         jwt.verify(splitToken[1], "doneByAnil", (error, decodedtoken) => {
@@ -59,5 +59,7 @@ let authorization = async function (req, res, next) {
         return res.status(500).send({ status: false, message: error.message });
     }
 }
+
+
 
 module.exports = { authentication, authorization }

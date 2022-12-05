@@ -38,7 +38,6 @@ const signUp = async function (req, res) {
             return res.status(400).send({ status: false, message: "The user name may contain only letters" });
         }
 
-
         // phone validations
         if (!isValid(phone)) {
             return res.status(400).send({ status: false, message: "Please Enter Phone Number" });
@@ -46,7 +45,6 @@ const signUp = async function (req, res) {
         if (!validPhone.test(phone)) {
             return res.status(400).send({ status: false, message: "The user phone number should be indian may contain only 10 number" });
         }
-
 
         // email validations
         if (!isValid(email)) {
@@ -56,7 +54,6 @@ const signUp = async function (req, res) {
             return res.status(400).send({ status: false, message: "Entered email is invalid" });
         }
 
-
         // Checks whether password is empty or is enter as a string or a valid pasword.
         if (!isValid(password)) {
             return res.status(400).send({ status: false, message: "Please enter Password" });
@@ -64,7 +61,6 @@ const signUp = async function (req, res) {
         if (!validPassword.test(password)) {
             return res.status(400).send({ status: false, message: "Please enter password in range of '8-15', with at least a symbol, upper and lower case letters and a number" });
         }
-
 
         // checking uniqueness of email and phone
         let duplicatePhone = await userModel.findOne({ phone });
@@ -75,7 +71,6 @@ const signUp = async function (req, res) {
         if (duplicateEmail) {
             return res.status(409).send({ status: false, message: `${email} already exists` });
         }
-
 
         //user creation
         let savedData = await userModel.create(data);

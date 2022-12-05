@@ -13,7 +13,7 @@ const propertySchema = new mongoose.Schema({
         trim: true
     },
     purchaseDate: {
-        type: String,
+        type: Date,
         trim: true
     },
     leasePeriod: {
